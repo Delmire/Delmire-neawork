@@ -1,0 +1,42 @@
+decomposed minmax
+
+players hand
+
+two cards to remove
+
+
+opponents hand
+46C6 possibilities (9366819)
+
+if suit doesnt matter than there is between
+
+
+1,1,1,1,2,2
+
+2,2
+4*3
+4*4
+4*5
+4*6
+4*7
+4*8
+4*9
+4*10
+4*11
+4*12
+4*13
+
+chose 6 (one two is equivelant to any other)
+below is shown how many types of hand a player can have ignoring suits and any two numbers of one type are considered equal(9 total)
+T1 	4	1	1			
+T2 	4	2				
+T3	3	1	1	1		
+T4	3	2	1			
+T5	3	3				
+T6	2	1	1	1	1	
+T7	2	2	1	1		
+T8	2	2	2			
+T9	1	1	1	1	1	1
+
+
+this results in 1428024 not before removing possibilities based on players hand

@@ -1,0 +1,12 @@
+function discardRandom(hand)
+	first = random.between(1,6)
+	second = random.between(1,6)
+	while first == second
+		second = random.between(1,6)
+	return first, second
+
+
+function PlaceCardRandom(hand)
+	card = random.between(1,hand.length)
+	return hand[card]
+	

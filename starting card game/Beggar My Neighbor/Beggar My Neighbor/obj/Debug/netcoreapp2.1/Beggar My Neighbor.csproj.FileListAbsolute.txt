@@ -1,0 +1,11 @@
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\bin\Debug\netcoreapp2.1\Beggar My Neighbor.deps.json
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\bin\Debug\netcoreapp2.1\Beggar My Neighbor.runtimeconfig.json
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\bin\Debug\netcoreapp2.1\Beggar My Neighbor.runtimeconfig.dev.json
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\bin\Debug\netcoreapp2.1\Beggar My Neighbor.dll
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\bin\Debug\netcoreapp2.1\Beggar My Neighbor.pdb
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\obj\Debug\netcoreapp2.1\Beggar My Neighbor.csprojAssemblyReference.cache
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\obj\Debug\netcoreapp2.1\Beggar My Neighbor.csproj.CoreCompileInputs.cache
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\obj\Debug\netcoreapp2.1\Beggar My Neighbor.AssemblyInfoInputs.cache
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\obj\Debug\netcoreapp2.1\Beggar My Neighbor.AssemblyInfo.cs
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\obj\Debug\netcoreapp2.1\Beggar My Neighbor.dll
+\\file\wallerj025079$\a level\computer science\nea\starting card game\Beggar My Neighbor\Beggar My Neighbor\obj\Debug\netcoreapp2.1\Beggar My Neighbor.pdb

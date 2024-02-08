@@ -1,0 +1,24 @@
+hand = [0,0,0,0,0,0,0,0,0,0,0,0,0]
+Int Score = 0
+for i in range 13
+	if crib == hand[i]
+		hand[i] += 1
+	endif
+endfor
+For I in range 4
+	For j in range 13
+		If hand[i] == j
+			hand[j] = hand[j]-1
+		Endif
+	Endfor
+endfor
+for I in range(13)
+	if hand[i] == 2
+		score += 2
+	elif hand[i] == 3
+		score += 6
+	elif hand[i] == 4
+		score += 12
+	endif
+
+

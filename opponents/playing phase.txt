@@ -1,0 +1,20 @@
+function PlayCards(PlayerHand, OpponentHand, turn)
+	PlayerScore = 0
+	OpponentScore = 0
+	StackTotal = 0
+	lastToPlace = false
+	while PlayerHand>0 AND OpponentHand > 0
+		if StackTotal == 15
+			if lastToPlace
+				PlayerScore += 2
+			else
+				OpponentScore += 2
+			endif
+		endif
+		
+
+player hand > 0
+opponent hand > 0
+players hand wouldnt go over 31
+opponents hand wouldnt go over 31
+whoevers turn

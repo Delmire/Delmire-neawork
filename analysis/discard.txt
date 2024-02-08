@@ -1,0 +1,17 @@
+funtion discardCompare(discard,deck, hand)
+	card = [0,0,0,0,0]
+	for i in range 46
+		for j in range 47-i
+			Card[0] = deck[i]
+			Card[1] = deck[i+j]
+			Card[2] = discard[0]
+			Card[3] = discard[1]
+			for k in range 48-i-j
+				card[4] = deck[i+j+k]
+				score += snap(cards)
+				score += straights(cards)
+				score += fifteens(cards)
+			endfor
+		endfor
+	endfor
+endfunction

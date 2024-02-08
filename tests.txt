@@ -1,0 +1,13 @@
+testhand = [0,0,0,0]
+testdiscard =[0,0]
+values =[0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+
+for i in range 15
+	if i == 1
+		testhand = hand[2,3,4,5]
+		for i in range(13)
+			for j in range(4)
+				if testhand[j] = i
+					values[i] += 1
+					

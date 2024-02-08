@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://cliambrown.com/cribbage/methodology.php -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+            <!-- Google tag (gtag.js) -->
+        <script async="" src="./C. Liam Brown — Cribbage Discard Pro — Methodology_files/js"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-R8S9K70WBQ');
+        </script>
+        
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>C. Liam Brown — Cribbage Discard Pro — Methodology</title>
+    <meta name="description" content="An explanation of how the Cribbage Discard Pro works so awesomely.">
+    
+    <meta property="og:url" content="https://cliambrown.com/cribbage/methodology.php">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="C. Liam Brown — Cribbage Discard Pro — Methodology">
+    <meta property="og:description" content="An explanation of how the Cribbage Discard Pro works so awesomely.">
+    <meta property="og:updated_time" content="1687795548">
+            <meta name="twitter:card" content="summary">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="google-site-verification" content="d4OVvslFb3FY4PNtutICXO1wT2m6K5eW5ZltFJNzUks">
+    
+    <link rel="alternate" type="application/rss+xml" href="https://cliambrown.com/feed.rss" title="RSS feed for CLiamBrown.com">
+    
+    <link href="./C. Liam Brown — Cribbage Discard Pro — Methodology_files/css" rel="stylesheet">
+    <link href="./C. Liam Brown — Cribbage Discard Pro — Methodology_files/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="./C. Liam Brown — Cribbage Discard Pro — Methodology_files/main.min.css">
+    </head>
+
+<body class="">
+    
+    <div id="container">
+        
+        <header>
+            <h1>
+                <span id="menu-toggle-wrapper">
+                    <button id="menu-toggle" title="Toggle the menu"><div class="bar top-bar"></div><div class="bar middle-bar"></div><div class="bar bottom-bar"></div></button>
+                </span>
+                <a id="logo" href="https://cliambrown.com/" title="Home">C. Liam Brown</a>
+            </h1>
+        </header>
+        
+        <div id="sidebar">
+                        <nav id="main-menu">
+                <ul>
+                    <li class="heading">Cribbage</li>
+<li><a class="" href="https://cliambrown.com/cribbage/">Cribbage Discard Pro</a></li>
+<li><a class="active" href="https://cliambrown.com/cribbage/methodology.php">Methodology</a></li>
+<li><a class="" href="https://cliambrown.com/cribbage/board.php">Online Cribbage Board</a></li>
+
+<li class="heading">Battleship</li>
+<li><a class="" href="https://cliambrown.com/battleship/play.php">Play Battleship</a></li>
+<li><a class="" href="https://cliambrown.com/battleship/">Probability Calculator</a></li>
+<li><a class="" href="https://cliambrown.com/battleship/methodology.php">Methodology</a></li>
+<li><a class="" href="https://cliambrown.com/battleship/stats.php">Game Stats</a></li>
+
+<li class="heading">Inventions</li>
+<li><a class="" href="https://cliambrown.com/contrast/">Colour Contrast Tool</a></li>
+<li><a class="" href="https://cliambrown.com/antisocial/info.php">The Antisocial Network</a></li>
+<li><a class="" href="https://cliambrown.com/accentadder/">French Accent Adder</a></li>
+<li><a class="" href="https://cliambrown.com/nhl_trades/">NHL Trades</a></li>
+<li><a class="" href="https://cliambrown.com/motion/">Motion Graphs</a></li>
+<li><a class="" href="https://cliambrown.com/dice/">3D Online Dice</a></li>
+<li><a class="" href="https://cliambrown.com/typing/">Typing Practice</a></li>
+
+<li class="heading">Words + Sounds</li>
+<li><a class="" href="https://cliambrown.com/comic/">Comic Strip</a></li>
+<li><a class="" href="https://cliambrown.com/audio/">Audio</a></li>
+<li><a class="" href="https://cliambrown.com/writing/mind_the_gap.php">Mind The Gap</a></li>
+<li><a class="" href="https://cliambrown.com/writing/self-studies_of_science_teacher_education_practices.php">Teacher Self-Studies</a></li>
+
+<li class="heading">Other</li>
+<li><a class="" href="https://cliambrown.com/contact/">Contact</a></li>
+
+                </ul>
+            </nav>
+        </div>
+        
+        <div id="content">
+    <h1 class="content-heading">Cribbage Discard Pro: Methodology</h1>
+
+    <p>Here's the basic algorithm:</p>
+
+    <ol>
+        <li>Select two cards to discard from the user's hand.</li>
+        <li>Select a turn card from the remaining deck.</li>
+        <li>Select two cards from the remaining deck to act as the opponent's discard.</li>
+        <li>Score the hand and the crib for this combination.</li>
+        <li>If it's the user's crib, record the sum of the hand and the crib. If it's not, record the difference.</li>
+        <li>If this combination produces a maximum or minimum hand score, crib score, or sum/difference of the two, record this value.
+        (If it's a maximum hand or hand-crib sum/difference, also record the turn card and opponent's discards.)</li>
+        <li>Repeat for all possible opponent discards, for all possible turn cards, and for all possible user discards.</li>
+        <li>If it's the user's crib, suggest they discard the combination with the highest average value for the sum of the hand and
+        the crib. If it's not, suggest the one with the highest average value for the difference between the hand and the crib.</li>
+    </ol>
+
+    <h2>Weighting</h2>
+
+    <p>Because it's more or less likely that your opponent will discard certain combinations (e.g. a pair of fives if it's your crib),
+    a weighting system is used when calculating the average crib score and the average hand-plus-crib/hand-minus-crib 
+    score. To calculate these weights, the algorithm analyzed large batches of random six-card hands to develop static weighting 
+    tables of discard probabilities, iterating this process until the values stabilized. (The initial tables were based on 
+    the <a href="http://www.cribbageforum.com/SchellDiscard.htm">discard tables</a> kindly provided by Michael Schell of 
+    <a href="http://cribbageforum.com/">cribbageforum.com</a>.)</p>
+
+    <p>The scores are then re-weighted to reflect the probability of the opponent discarding two suited cards. Due to the statistical
+    improbability of a flush in the crib, the average crib score increases by only 0.04 points with suited discards, so this 
+    second weighting factor is almost insignificant.</p>
+
+    <p>Since these weights are applied to the opponent's discards, the algorithm inherently assumes that the opponent is an
+    expert-level cribbage player.</p>
+
+    <h2>Pegging</h2>
+
+    <p>The algorithm does not at all consider pegging capabilities when selecting the best discards. For advice on discarding with
+    pegging in mind, see for example <a href="https://www.cribbage.org/NewSite/tips/colvert2.asp">DeLynn Colvert's "magic eleven" tip</a>.</p>
+
+    <h2>Optimization</h2>
+
+    <p>Much like with the <a href="https://cliambrown.com/battleship/methodology.php">Battleship Calculator</a>, the biggest challenge in this project
+    lay in getting the processing down to a reasonable amount of time.</p>
+
+    <p>Every time it runs, the algorithm has to score 683,790 individual five-card hands – checking multiple combinations of the 
+    cards for runs, pairs, fifteens, flushes, and the nibs. But I was surprised to find that if you ignore suits, there are only
+    6,175 combinations of five cards! So before working on the user's hand, the program actually scores every possible hand and 
+    saves the results to a list*, which can be quickly referenced later on. (It still checks for flushes and His Nibs, but that's 
+    a fairly quick process.)</p>
+
+    <p>Aside from other minor coding stuff, there was one other trick I found while working on the algorithm. (It's a bit technical,
+    so feel free to stop here if you're not into programming.) There are multiple instances where it needs to run through every 
+    combination of two cards from the deck, which takes a while. In those cases, to save time and avoid double-counting, the deck 
+    is numbered from 1 to 52; the first card's variable (C1) runs from 1 to 51, and then C2 runs from C1+1 to 52.</p>
+
+    <p>* Specifically, it saves the scores to an array with prime-based hash indices. Each card's numerical value is converted into
+    its respective prime number (1 = 1, ... 4 = 5, 5 = 7, etc); multiplying all five primes together gives a unique key that 
+    can be used for fast storage and retrieval.</p>
+    
+    <br>
+
+    <p class="center-text"><a href="https://cliambrown.com/cribbage/">Back to Cribbage Discard Pro</a></p>
+    
+        </div> <!-- #content -->
+
+        </div> <!-- #container -->
+
+        <!-- This fake div hidden preloads font awesome icons -->
+        <div class="div-fake-hidden" style="width:0px;height:0px;overflow:hidden;color:transparent;">
+            <i class="fa fa-check"></i>
+            <i class="fa fa-times"></i>
+            <i class="fa fa-check-square-o"></i>
+            <i class="fa fa-square-o"></i>
+            <i class="fa fa-compress"></i>
+        </div>
+
+        <script src="./C. Liam Brown — Cribbage Discard Pro — Methodology_files/jquery.min.js.download"></script>
+        <script>
+            window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.2.min.js"><\/script>')
+        </script>
+
+        <script src="./C. Liam Brown — Cribbage Discard Pro — Methodology_files/main.js.download"></script>
+        
+        
+        
+
+        
+
+        </body></html>

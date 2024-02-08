@@ -1,0 +1,8 @@
+function deal
+	while runtime<animationtime
+		deck(random.randint) = deck(random.randint)
+	endwhile
+	for i in range(6)
+		hand = deck[i*2]
+	for i in range(6)
+		opponentHand = deck[i*2-1]

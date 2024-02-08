@@ -1,0 +1,21 @@
+function striaghts(hand)
+	coninuous= 0
+	score = 0
+	fourCards
+	threeCards
+	for i in range 13
+		if hand[i] > 0
+			continuous += 1
+		elif hand[i] == 0  
+			if continuous == 5
+				score = 5
+			elif continuous == 4
+				score = hand[i-3]*hand[i-2]*hand[i-1]*hand[i]*4
+			elif coninuous == 3
+				score = hand[i-2]*hand[i-1]*hand[i]*3
+			else
+				continuous = 0
+			endif
+		endif
+	endfor
+endfunction
