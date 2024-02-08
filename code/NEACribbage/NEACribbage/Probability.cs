@@ -56,7 +56,7 @@ namespace NEACribbage
             {
                 suit = "S";
             }
-            else if (cardNum / 4 == 1)
+            else if (cardNum / 4 == 1) 
             {
                 suit = "C";
             }
