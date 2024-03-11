@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +16,7 @@ namespace NEACribbage
         private List<Card> DDeck = new List<Card>();
         List<Card> HHand;
         private bool crib;
+        Deck TheDeck = new Deck();
         public Probability(List<Card> hand, bool Crib)
         {
             HHand = hand;
@@ -102,117 +103,322 @@ namespace NEACribbage
             return DDeck;
         }
 
+        //private List<Card> Best(List<Card> DDeck, List<Card> HHand, bool Crib)
+        //{
+        //    List<double> Scores = new List<double>();
+        //    List<Card> best = new List<Card>();
+        //    List<Card> Discard = new List<Card>();
+        //    List<Card> Remaining = new List<Card>();
+        //    best.Add(HHand[0]);
+        //    best.Add(HHand[1]);
+        //    double iterations;
+        //    double ScoreFifteen;
+        //    double ScoreSnap;
+        //    double ScoreStraight;
+        //    double Score = 0;
+        //    int BestPosition = 1;
+        //    int[] HandRanks = { 0, 0, 0, 0, 0 };
+        //    //L[X] is short for layer x, such that it is how many of said layer there are initially
+        //    int[] L = { 0, 0, 0, 0, 0 };
+        //    int[] BrokenDeck = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        //    int[] CheckerDeck = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        //    //Used to keep track of how many of each number is in the calculated hand
+        //    int[] CounterDeck = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        //    //These will be used to establish how many variations of a hand can be made
+        //    double[] ChoosesDeck = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        //    for (int i = 0; i < DDeck.Count; i++)
+        //    {
+        //        BrokenDeck[DDeck[i].GetRank() - 1] += 1;
+        //    }
+        //    for (int i = 0; i < 13; i++)
+        //    {
+        //        L[0] = BrokenDeck[i];
+        //        CheckerDeck = BrokenDeck;
+        //        if (CheckerDeck[i] > 0)
+        //        {
+        //            CheckerDeck[i] -= 1;
+        //            for (int j = 0; j < 13; j++)
+        //            {
+        //                L[1] = BrokenDeck[j];
+        //                if (CheckerDeck[j] > 0)
+        //                {
+        //                    CheckerDeck[j] -= 1;
+        //                    for (int k = 0; k < 13; k++)
+        //                    {
+        //                        L[2] = BrokenDeck[k];
+        //                        if (CheckerDeck[k] > 0)
+        //                        {
+        //                            CheckerDeck[k] -= 1;
+        //                            for (int l = 0; l < 5; l++)
+        //                            {
+        //                                iterations = 0;
+        //                                CheckerDeck[l] -= 1;
+        //                                for (int m = 0; m < 6; m++)
+        //                                {
+        //                                    ScoreSnap = 0;
+        //                                    ScoreStraight = 0;
+        //                                    ScoreFifteen = 0;
+        //                                    Discard.Add(HHand[l]);
+        //                                    Discard.Add(HHand[m]);
+        //                                    CounterDeck[i] += 1;
+        //                                    CounterDeck[j] += 1;
+        //                                    CounterDeck[k] += 1;
+        //                                    HandRanks[0] = i + 1;
+        //                                    HandRanks[1] = j + 1;
+        //                                    HandRanks[2] = k + 1;
+        //                                    HandRanks[3] = HHand[l].GetRank();
+        //                                    HandRanks[4] = HHand[m].GetRank();
+        //                                    for (int o = 0; o < 13; o++)
+        //                                    {
+        //                                        ChoosesDeck[o] = Choose(BrokenDeck[o], CounterDeck[o]);
+        //                                    }
+        //                                    if (i == j & i == k)
+        //                                    {
+        //                                        ScoreSnap += Snap(HandRanks) * ChoosesDeck[i];
+        //                                        ScoreStraight += Straights(HandRanks) * ChoosesDeck[i];
+        //                                        ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[i];
+        //                                    }
+        //                                    else if (i == j & j != k)
+        //                                    {
+        //                                        ScoreSnap += Snap(HandRanks) * ChoosesDeck[i] * ChoosesDeck[k];
+        //                                        ScoreStraight += Straights(HandRanks) * ChoosesDeck[i] * ChoosesDeck[k];
+        //                                        ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[i] * ChoosesDeck[k];
+        //                                    }
+        //                                    else if (i == k & j != i)
+        //                                    {
+        //                                        ScoreSnap += Snap(HandRanks) * ChoosesDeck[k] * ChoosesDeck[j];
+        //                                        ScoreStraight += Straights(HandRanks) * ChoosesDeck[k] * ChoosesDeck[j];
+        //                                        ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[k] * ChoosesDeck[j];
+        //                                    }
+        //                                    else if (j == k & k != i)
+        //                                    {
+        //                                        ScoreSnap += Snap(HandRanks) * ChoosesDeck[j] * ChoosesDeck[j];
+        //                                        ScoreStraight += Straights(HandRanks) * ChoosesDeck[i] * ChoosesDeck[j];
+        //                                        ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[i] * ChoosesDeck[j];
+        //                                    }
+        //                                    Score += ScoreSnap + ScoreStraight + ScoreFifteen;
+        //                                    iterations += 1;
+        //                                }
+        //                                Scores.Add(Score / iterations);
+        //                                if (Scores[BestPosition] <= Scores[Scores.Count - 1])
+        //                                {
+        //                                    BestPosition = Scores.Count - 1;
+        //                                    best = Discard;
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return best;
+        //}
+
+        //private List<Card> Best(List<Card> DDeck, List<Card> HHand, bool Crib)
+        //{
+        //    double Score = 0;
+        //    double ScoreCrib = 0;
+        //    double MeanScore = 0;
+        //    double BestScore = 0;
+        //    int[] RanksCrib = { 0, 0, 0, 0, 0};
+        //    int[] RanksHand = { 0, 0, 0, 0, 0};
+        //    List<Card> TheCards = new List<Card>();
+        //    List<Card> RemainingCards = ReadDeck(HHand);
+        //    List<Card> TestCrib = new List<Card>();
+        //    List<Card> TestHand = new List<Card>();
+        //    List<Card> TestWithTurned = new List<Card>();
+        //    List<Card> RemainingAfterturned = new List<Card>();
+        //    List<Card> BestCards = new List<Card>();
+        //    BestCards.Add(HHand[0]);
+        //    BestCards.Add(HHand[1]);
+        //    for (int i =0; i<5; i++)
+        //    {
+        //        for(int j = i+1; j<6; j++)
+        //        {
+        //            MeanScore = 0;
+        //            TestHand = new List<Card>();
+        //            Score = 0;
+        //            TestCrib = new List<Card>();
+        //            for (int iterator = 0; iterator < 6; iterator++)
+        //            {
+        //                if (i != iterator)
+        //                {
+        //                    if (j != iterator)
+        //                    {
+        //                        TestHand.Add(HHand[iterator]);
+        //                    }
+        //                    else
+        //                    {
+        //                        TestCrib.Add(HHand[iterator]);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    TestCrib.Add(HHand[iterator]);
+        //                    TestCrib.Add(HHand[iterator]);
+        //                    TestCrib.Add(HHand[iterator]);
+        //                }
+        //            }
+        //            RanksHand[0] = TestHand[0].GetRank();
+        //            RanksHand[1] = TestHand[1].GetRank();
+        //            RanksHand[2] = TestHand[2].GetRank();
+        //            RanksHand[3] = TestHand[3].GetRank();
+        //            TestWithTurned = TestHand;
+        //            TestWithTurned.Add(TestHand[0]);
+        //            for (int k = 0; k<RemainingCards.Count; k++)
+        //            {
+        //                RanksHand[4] = RemainingCards[k].GetRank();
+        //                TestWithTurned[4] = RemainingCards[k];
+        //                RemainingAfterturned = ReadDeck(TestWithTurned);
+        //                for (int l = 0; l<RemainingAfterturned.Count -2;l++)
+        //                {
+        //                    TestCrib[2] = RemainingAfterturned[l];
+        //                    for(int m = 0; m< RemainingAfterturned.Count -1; m++)
+        //                    {
+        //                        TestCrib[3] = RemainingAfterturned[m];
+        //                        ScoreCrib += ScoreCribPotential(TestCrib);
+        //                        Score = Straights(RanksHand);
+        //                        Score += Snap(RanksHand);
+        //                        Score += Fifteens(RanksHand);
+        //                        if (crib)
+        //                        {
+        //                            Score += ScoreCrib;
+        //                        }
+        //                        else
+        //                        {
+        //                            Score -= ScoreCrib;
+        //                        }
+        //                        MeanScore += Score;
+        //                        Console.WriteLine(MeanScore);
+        //                    }
+        //                }
+        //            }
+        //            if(MeanScore>BestScore)
+        //            {
+        //                MeanScore = BestScore;
+        //                BestCards[0] = HHand[i];
+        //                BestCards[1] = HHand[j];
+        //            }
+        //        }
+        //    }
+        //    return BestCards;
+        //}
+
         private List<Card> Best(List<Card> DDeck, List<Card> HHand, bool Crib)
         {
-            List<double> Scores = new List<double>();
-            List<Card> best = new List<Card>();
-            List<Card> Discard = new List<Card>();
-            List<Card> Remaining = new List<Card>();
-            best.Add(HHand[0]);
-            best.Add(HHand[1]);
-            double iterations;
-            double ScoreFifteen;
-            double ScoreSnap;
-            double ScoreStraight;
-            double Score = 0;
-            int[] HandRanks = { 0, 0, 0, 0, 0 };
-            //LX is short for layer x, such that it is how many of said layer there are initially
-            int[] L = { 0, 0, 0, 0, 0 };
-            int[] BrokenDeck = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            int[] CheckerDeck = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            //Used to keep track of how many of each number is in the calculated hand
-            int[] CounterDeck = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            //These will be used to establish how many variations of a hand can be made
-            double[] ChoosesDeck = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-            for (int i = 0; i <= DDeck.Count; i++)
+            int[] HandRanks;]
+            Card TurnedCard;
+            Card[] CurrentHand = new Card[4];
+            //selects first card
+            for(int i = 0; i<5; i++)
             {
-                BrokenDeck[DDeck[i].GetRank() - 1] += 1;
-            }
-            for (int i = 0; i < 13; i++)
-            {
-                L[0] = BrokenDeck[i];
-                CheckerDeck = BrokenDeck;
-                if (CheckerDeck[i] > 0)
+                //selects second card
+                for(int j =i; j<6; j++)
                 {
-                    CheckerDeck[i] -= 1;
-                    for (int j = 0; j < 13; j++)
+                    //sets remaining hand for scoring calculations
+                    CurrentHand = RemainingHand(HHand, i, j);
+                    for(int k =0; k<ReadDeck(HHand).Count; k++)
                     {
-                        L[1] = BrokenDeck[j];
-                        if (CheckerDeck[j] > 0)
-                        {
-                            CheckerDeck[j] -= 1;
-                            for (int k = 0; k < 13; k++)
-                            {
-                                L[2] = BrokenDeck[k];
-                                if (CheckerDeck[k] > 0)
-                                {
-                                    CheckerDeck[k] -= 1;
-                                    for (int l = 0; l < 5; l++)
-                                    {
-                                        CheckerDeck[l] -= 1;
-                                        for (int m = l; l < 6; l++)
-                                        {
-                                            int BestPosition = 0;
-                                            ScoreSnap = 0;
-                                            ScoreStraight = 0;
-                                            ScoreFifteen = 0;
-                                            iterations = 0;
-                                            Discard.Add(HHand[l]);
-                                            Discard.Add(HHand[m]);
-                                            CounterDeck[i] += 1;
-                                            CounterDeck[j] += 1;
-                                            CounterDeck[k] += 1;
-                                            HandRanks[0] = i + 1;
-                                            HandRanks[1] = j + 1;
-                                            HandRanks[2] = k + 1;
-                                            HandRanks[3] = HHand[l].GetRank();
-                                            HandRanks[4] = HHand[m].GetRank();
-                                            for (int o = 0; o < 13; o++)
-                                            {
-                                                ChoosesDeck[o] = Choose(BrokenDeck[o], CounterDeck[o]);
-                                            }
-                                            if (i == j & i == k)
-                                            {
-                                                ScoreSnap += Snap(HandRanks) * ChoosesDeck[i];
-                                                ScoreStraight += Straights(HandRanks) * ChoosesDeck[i];
-                                                ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[i];
-                                            }
-                                            else if (i == j & j != k)
-                                            {
-                                                ScoreSnap += Snap(HandRanks) * ChoosesDeck[i] * ChoosesDeck[k];
-                                                ScoreStraight += Straights(HandRanks) * ChoosesDeck[i] * ChoosesDeck[k];
-                                                ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[i] * ChoosesDeck[k];
-                                            }
-                                            else if (i == k & j != i)
-                                            {
-                                                ScoreSnap += Snap(HandRanks) * ChoosesDeck[k] * ChoosesDeck[j];
-                                                ScoreStraight += Straights(HandRanks) * ChoosesDeck[k] * ChoosesDeck[j];
-                                                ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[k] * ChoosesDeck[j];
-                                            }
-                                            else if (j == k & k != i)
-                                            {
-                                                ScoreSnap += Snap(HandRanks) * ChoosesDeck[j] * ChoosesDeck[j];
-                                                ScoreStraight += Straights(HandRanks) * ChoosesDeck[i] * ChoosesDeck[j];
-                                                ScoreFifteen += Fifteens(HandRanks) * ChoosesDeck[i] * ChoosesDeck[j];
-                                            }
-                                            Score += ScoreSnap + ScoreStraight + ScoreFifteen;
-                                            iterations += 1;
-                                            Scores.Add(Score / iterations);
-                                            if (Scores[BestPosition] <= Score)
-                                            {
-                                                BestPosition = Scores.Count;
-                                                best = Discard;
-                                            }
+                        TurnedCard = ReadDeck(HHand)[k];
 
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
-            return best;
+        }
+
+        private int Scorehand(Card[] HHand, Card TurnedCard)
+        {
+            Card[] HandWithTurned = new Card[5];
+            int[] WithTurnedRanks = new int[5];
+            for(int i =0; i<4; i++)
+            {
+                HandWithTurned[i] = HHand[i];
+                WithTurnedRanks[i] = HHand[i].GetRank();
+            }
+            HandWithTurned[4] = TurnedCard;
+            WithTurnedRanks[4] = TurnedCard.GetRank();
+            double score = Fifteens(WithTurnedRanks);
+            score += Straights(WithTurnedRanks);
+            score += Snap(WithTurnedRanks);
+        }
+
+        private Card[] RemainingHand(List<Card> Hand, int i, int j)
+        {
+            Card[] CurrentHand = new Card[4];
+            for (int k = 0; k < 6; k++)
+            {
+                //creates hand from remaining cards
+                if (k != i)
+                {
+                    if (k != j)
+                    {
+                        CurrentHand[k] = HHand[k];
+                    }
+                }
+            }
+            return CurrentHand;
+        }
+
+        private int ScoreCribPotential(List<Card> CardNums)
+        {
+            int score = 0;
+            List<Card> HHand = new List<Card>();
+            if (CardNums[0] == CardNums[1])
+            {
+                if (CardNums[2] == CardNums[1])
+                {
+                    score += 6;
+                }
+                else
+                {
+                    score += 2;
+                }
+            }
+            if (CardNums[0].GetRank() == CardNums[1].GetRank() - 1 && CardNums[1].GetRank() == CardNums[2].GetRank() - 1)
+            {
+                score += 3;
+            }
+            else if(CardNums[0].GetRank() == CardNums[2].GetRank() - 1 && CardNums[2].GetRank() == CardNums[1].GetRank() - 1)
+            {
+                score += 3;
+            }
+            else if (CardNums[1].GetRank() == CardNums[0].GetRank() - 1 && CardNums[0].GetRank() == CardNums[2].GetRank() - 1)
+            {
+                score += 3;
+            }
+            else if (CardNums[1].GetRank() == CardNums[2].GetRank() - 1 && CardNums[2].GetRank() == CardNums[0].GetRank() - 1)
+            {
+                score += 3;
+            }
+            else if (CardNums[2].GetRank() == CardNums[0].GetRank() - 1 && CardNums[0].GetRank() == CardNums[1].GetRank() - 1)
+            {
+                score += 3;
+            }
+            else if (CardNums[2].GetRank() == CardNums[1].GetRank() - 1 && CardNums[1].GetRank() == CardNums[0].GetRank() - 1)
+            {
+                score += 3;
+            }
+            return score;
+        }
+
+        private int NibsNobs(List<Card> Hand, Card TurnedCard)
+        {
+            for(int i =0; i<Hand.Count; i++)
+            {
+                if(Hand[i].GetRank() == 11)
+                {
+                    if(TurnedCard.GetSuit() == Hand[i].GetSuit())
+                    {
+                        return 1;
+                    }
+                }
+            }
+            if(TurnedCard.GetRank() == 11)
+            {
+                return 2;
+            }
+            return 0;
         }
 
         private List<Card> BestTen(List<Card> HHand)
@@ -272,19 +478,18 @@ namespace NEACribbage
 
         public double Fifteens(int[] Cards)
         {
-            int score = 0;
-            int[] Ranks = Cards;
+            double score = 0;
             int total;
             string Numbers;
             for (int i = 0; i < 64; i++)
             {
                 total = 0;
                 Numbers = Convert.ToString(i, 2);
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 5; j++)
                 {
                     if (Numbers[j] == '1')
                     {
-                        total += Ranks[j];
+                        total += Cards[j];
                     }
                 }
                 if (total == 15)
@@ -294,9 +499,10 @@ namespace NEACribbage
             }
             return score;
         }
+
         public double Straights(int[] Cards)
         {
-            int score = 0;
+            double score = 0;
             int[] Totals = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             Totals[Cards[0]] += 1;
             Totals[Cards[1]] += 1;
@@ -338,7 +544,7 @@ namespace NEACribbage
 
         public double Snap(int[] Cards)
         {
-            int score = 0;
+            double score = 0;
             int[] Totals = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             Totals[Cards[0]] += 1;
             Totals[Cards[1]] += 1;
